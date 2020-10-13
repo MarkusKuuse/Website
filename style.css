@@ -1,0 +1,123 @@
+nav{
+    width: 100%;
+    background-color: palegreen;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+body{
+    background-color: paleturquoise;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nav-link{
+    white-space: nowrap;
+    color: black;
+    margin-right: 30px;
+    margin-left: 60px;
+    font-size: 40px;
+}
+.nav-link:hover{
+    color: yellow;
+}
+
+.break{
+    flex-basis: 100%;
+    height: 0;
+    border-top: 2px solid black;
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    font-size: 30px;
+    line-height: 50px;
+    margin-bottom: 10%;
+}
+
+.books, .authors {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+}
+
+footer{
+    background-color: palegreen;
+    width: 70%;
+    position: fixed;
+    bottom: 0;
+    border-radius: 10px;
+}
+
+.footer-txt{
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 40px;
+}
+
+input[type=submit]{
+    background: palegoldenrod;
+    border-radius: 5px;
+    border: 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    margin-top: 10px;
+}
+
+input[type=submit]:hover{
+    opacity: 55%;
+}
+
+.firstname, .book{
+    width: 30%;
+    text-align: center;
+}
+
+.header-lastname, .header-author, .header-firstname, .header-book, .header-grade{
+    width: 30%;
+    text-align: center;
+
+}
+
+.lastname, .author, .firstname, .book, .grade {
+    width: 30%;
+    text-align: center;
+}
+
+.addauthor, .addbook{
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    display: table;
+    margin-top: 5%;
+    font-size: 25px;
+    flex-wrap: wrap;
+}
+
+.label-div{
+    padding-left: 20%;
+    text-align: left;
+}
+
+.input-div{
+    text-align: right;
+    line-height: 10%;
+}
+#delete{
+    text-align: right;
+    margin-right: 10px;
+    background: palevioletred;
+}
+
+#author1, #author2, #title{
+    width: 45%;
+}
+#delete{
+    margin-top: 5px;
+}

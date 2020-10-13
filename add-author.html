@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lisa autor </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="nav-link" href="index.php" id="book-list-link">Raamatud</a>
+        <a class="nav-link" href="author-list.php" id="author-list-link">Autorid</a>
+        <a class="nav-link" href="add-book.html" id="book-form-link">Lisa raamat</a>
+        <a class="nav-link" href="add-author.html" id="author-form-link">Lisa autor</a>
+    </nav>
+
+    <form action="store-author.php" method="post" >
+<div id="author" class="addauthor">
+    <div class="label-div">
+    <label class="authorname" for="firstName">Eesnimi:</label>
+    </div>
+    <div class="input-div">
+        <input id="firstName" name="firstName" type="text">
+    </div>
+    <br>
+    <div class="label-div">
+    <label class="authorname" for="lastName">Perekonnanimi:</label>
+    </div>
+    <div class="input-div">
+        <input id="lastName" name="lastName" type="text">
+    </div>
+    <br>
+    <div class="label-div">
+    <label class="grade">Hinne:</label>
+    </div>
+    <div class="input-div">
+    <label>
+        <input name="grade" type="radio" value="5/5">
+        5
+    </label>
+    <label>
+        <input name="grade" type="radio" value="4/5">
+        4
+    </label>
+    <label>
+        <input name="grade" type="radio" value="3/5">
+        3
+    </label>
+    <label>
+        <input name="grade" type="radio" value="2/5">
+        2
+    </label>
+    <label>
+        <input name="grade" type="radio" value="1/5">
+        1
+    </label>
+    <br>
+    </div>
+        <div class="input-div">
+    <label class="save">
+        <input name="submitButton" type="submit" value="Submit">
+    </label>
+    </div>
+</div>
+    </form>
+<footer>
+    <a class="footer-txt">Info:</a>
+</footer>
+</body>
+</html>
