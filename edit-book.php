@@ -2,25 +2,37 @@
 require_once("book-data.php");
 $books = getBooks();
 $book = [];
+$_SESSION["Error"] = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     if (isset($_POST["submitButton"])) {
         // muuda postitust
         $title = $_POST["title"];
+        $_SESSION["title"] = $title;
         $grade = $_POST["grade"];
+        $_SESSION["grade"] = $grade;
+        $check = $_POST["isRead"];
+        $_SESSION["isRead"] = $check;
         $originaltitle = $_POST["original-title"];
-        editBook($originaltitle, $title, $grade);
-        header("Location: index.php");
+        $_SESSION["original-title"] = $originaltitle;
+            if (strlen($title) > 23 or strlen($title) < 3) {
+                if (isset($_SESSION["Error"])) {
+                    $_SESSION["Error"] = "Pealkiri peab olema vahemikus 3-23 tähemärki.";
+
+                }
+            } else {
+                editBook($originaltitle, $title, $grade, $check);
+                header("Location: index.php");
+            }
     } else {
         ($bookToDelete = $_POST["book-to-delete"]);
         deleteBook($bookToDelete);
-        header("Location: index.php");
+        header("Location: index.php?Success=Raamat Eemaldatud!");
     }
 } else {
     $title = $_GET["title"];
     $book = getBookByTitle($title);
-    //*echo($title);*//
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -34,18 +46,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <nav class="navbar">
         <a class="nav-link" href="index.php" id="book-list-link">Raamatud</a>
         <a class="nav-link" href="author-list.php" id="author-list-link">Autorid</a>
-        <a class="nav-link" href="add-book.html" id="book-form-link">Lisa raamat</a>
-        <a class="nav-link" href="add-author.html" id="author-form-link">Lisa autor</a>
+        <a class="nav-link" href="add-book.php" id="book-form-link">Lisa raamat</a>
+        <a class="nav-link" href="add-author.php" id="author-form-link">Lisa autor</a>
     </nav>
-
+    <div class="errors" id="error-block">
+        <?
+        echo $_SESSION["Error"];
+        ?>
+    </div>
 <form method="post" action="edit-book.php">
 <div id="author" class="addbook">
     <div class="label-div">
     <label for="title">Pealkiri:</label>
     </div>
     <div class="input-div">
-            <input id="title" name="title" type="text" value="<?= $book["title"] ?>">
-        <input type="hidden" name="original-title" value="<?= $book["title"] ?>">
+            <input id="title" name="title" type="text" value="<?= $_SESSION["title"]; echo $book["title"] ?>">
+        <input type="hidden" name="original-title" value="<?= $_SESSION["original-title"];echo $book["title"] ?>">
     </div>
 
     <!-- <br>
@@ -77,23 +93,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
      </div>
      <div class="input-div">
      <label>
-         <input id="grade" name="grade" type="radio" value="5/5">
+         <input id="grade" name="grade" type="radio" value=5 <? if  ($book["grade"] == 5 or $_SESSION["grade"] == 5) echo 'checked'?>>
     5
      </label>
      <label>
-         <input name="grade" type="radio" value="4/5">
+         <input name="grade" type="radio" value=4 <? if  ($book["grade"] == 4 or $_SESSION["grade"] == 4) echo 'checked'?>>
     4
      </label>
      <label>
-         <input name="grade" type="radio" value="3/5">
+         <input name="grade" type="radio" value=3 <? if  ($book["grade"] == 3 or $_SESSION["grade"] == 3) echo 'checked'?>>
     3
      </label>
      <label>
-         <input name="grade" type="radio" value="2/5">
+         <input name="grade" type="radio" value=2 <? if  ($book["grade"] == 2 or $_SESSION["grade"] == 2) echo 'checked'?>>
     2
      </label>
      <label>
-         <input name="grade" type="radio" value="1/5">
+         <input name="grade" type="radio" value=1 <? if  ($book["grade"] == 1 or $_SESSION["grade"] == 1) echo 'checked'?>>
     1
      </label>
      </div>
@@ -101,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
      <div class="label-div">
          <label>
 Loetud:
-         <input name="isRead" type="checkbox" value="read">
+         <input name="isRead" type="checkbox" value="isRead" <? if ($book["isRead"] == "isRead" or $_SESSION["isRead"] == 'isRead') echo 'checked'?>>
          </label>
      </div>
      <br>

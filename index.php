@@ -14,9 +14,14 @@
 <nav class="navbar">
     <a class="nav-link" href="index.php" id="book-list-link">Raamatud</a>
     <a class="nav-link" href="author-list.php" id="author-list-link">Autorid</a>
-    <a class="nav-link" href="add-book.html" id="book-form-link">Lisa raamat</a>
-    <a class="nav-link" href="add-author.html" id="author-form-link">Lisa autor</a>
+    <a class="nav-link" href="add-book.php" id="book-form-link">Lisa raamat</a>
+    <a class="nav-link" href="add-author.php" id="author-form-link">Lisa autor</a>
 </nav>
+
+<div class="success" id="message-block">
+    <?php echo $_GET['Success'];
+    ?>
+</div>
 
 <div id="list" class="list">
     <div class="header-book">Pealkiri</div>
